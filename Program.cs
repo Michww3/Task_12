@@ -1,13 +1,11 @@
 ﻿class Program
 {
-    static void Main (string[] args)
-    {
-        var autoResetEvent = new AutoResetEvent(false);
-        //Thread thread1 = new Thread(ThreadWork1);
-        //Thread thread2 = new Thread(ThreadWork2);
 
-        //thread1.Start();
-        //thread2.Start();
+    static void Main(string[] args)
+    {
+        bool EventType = false;
+
+        var autoResetEvent = new AutoResetEvent(SetEventType(EventType));
         ThreadPool.QueueUserWorkItem(ThreadWork1);
         ThreadPool.QueueUserWorkItem(ThreadWork2);
 
@@ -16,7 +14,7 @@
         Console.WriteLine("Unreachable text");
     }
 
-    static void ThreadWork1(object state)   
+    static void ThreadWork1(object state)
     {
         Console.WriteLine("Work1");
     }
@@ -24,4 +22,13 @@
     {
         Console.WriteLine("Work2");
     }
+    static int SetWidht(int value)
+    {
+        return value += 35;
+    }
+    static bool SetEventType(bool value)
+    {
+        return value;
+    }
+
 }
